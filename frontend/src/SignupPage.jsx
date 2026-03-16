@@ -25,7 +25,7 @@ function SignupPage() {
       return;
     }
 
-  
+
     localStorage.setItem("user", JSON.stringify({
       name: form.name,
       email: form.email

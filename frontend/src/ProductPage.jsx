@@ -7,63 +7,30 @@ function ProductPage() {
 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [cartCount, setCartCount] = useState(0);
   const [adding, setAdding] = useState(false);
 
-  const user = JSON.parse(localStorage.getItem("user"));
-
   useEffect(() => {
-    loadProduct();
-    loadCart();
-  }, [id]);
-
-
-  const loadProduct = () => {
-    setLoading(true);
-
-    fetch("http://127.0.0.1:8000/api/products/")
+    fetch("https://shopease-project.onrender.com/api/products/")
       .then(res => res.json())
       .then(data => {
-        const found = data.find(p => p.id === Number(id));
-        setProduct(found);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Product Error:", err);
+        const item = data.find(p => p.id === Number(id));
+        setProduct(item);
         setLoading(false);
       });
-  };
-
-
-  const loadCart = () => {
-    fetch("http://127.0.0.1:8000/api/cart/")
-      .then(res => res.json())
-      .then(data => setCartCount(data.items?.length || 0))
-      .catch(err => console.error("Cart Error:", err));
-  };
-
+  }, [id]);
 
   const addToCart = () => {
-    if (!product) return;
-
     setAdding(true);
 
     fetch("http://127.0.0.1:8000/api/cart/add/", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({ product_id: product.id }),
+      body: JSON.stringify({ product_id: product.id })
     })
       .then(res => res.json())
-      .then(() => {
-        loadCart();
-        setAdding(false);
-      })
-      .catch(err => {
-        console.error("Cart Error:", err);
-        setAdding(false);
-      });
+      .then(() => setAdding(false));
   };
 
   if (loading) return <div className="loading">Loading product...</div>;
@@ -72,27 +39,20 @@ function ProductPage() {
   return (
     <div className="product-page">
 
-
+      {/* Navbar */}
       <header className="navbar">
-        <Link to="/" className="logo">ShopEase</Link>
+        <Link to="/" className="logo">ShopZone</Link>
 
-        <nav className="nav-items">
-          {user ? (
-            <Link to="/profile">My Account</Link>
-          ) : (
-            <Link to="/login">Login</Link>
-          )}
-
-          <Link to="/cart" className="cart">
-            Cart ({cartCount})
-          </Link>
-        </nav>
+        <div className="nav-links">
+          <Link to="/">Home</Link>
+          <Link to="/cart">Cart</Link>
+        </div>
       </header>
 
+      {/* Product Layout */}
+      <div className="product-wrapper">
 
-      <div className="product-container">
-
-
+        {/* Product Image */}
         <div className="product-image">
           <img
             src={`http://127.0.0.1:8000${product.image}`}
@@ -100,24 +60,54 @@ function ProductPage() {
           />
         </div>
 
-
-        <div className="product-details">
+        {/* Product Info */}
+        <div className="product-info">
 
           <h1>{product.title}</h1>
 
+          <div className="rating">
+            ⭐⭐⭐⭐☆ (120 reviews)
+          </div>
+
           <p className="price">₹{product.price}</p>
+
+          <p className="stock">In Stock</p>
 
           <div className="divider"></div>
 
-          <h3>About this item</h3>
-          <p className="description">{product.description}</p>
+          <h3>Product Description</h3>
 
-          <button onClick={addToCart} disabled={adding}>
+          <p className="description">
+            {product.description}
+          </p>
+
+        </div>
+
+        {/* Purchase Box */}
+        <div className="purchase-box">
+
+          <h2>₹{product.price}</h2>
+
+          <p className="delivery">
+            FREE delivery Tomorrow
+          </p>
+
+          <button
+            className="cart-btn"
+            onClick={addToCart}
+            disabled={adding}
+          >
             {adding ? "Adding..." : "Add to Cart"}
           </button>
 
+          <button className="buy-btn">
+            Buy Now
+          </button>
+
         </div>
+
       </div>
+
     </div>
   );
 }

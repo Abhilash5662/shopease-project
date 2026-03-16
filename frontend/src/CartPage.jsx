@@ -11,7 +11,7 @@ function CartPage() {
   }, []);
 
   const loadCart = () => {
-    fetch("http://127.0.0.1:8000/api/cart/")
+    fetch("https://shopease-project.onrender.com/api/products/")
       .then(res => res.json())
       .then(data => {
         console.log("Cart Data:", data);
