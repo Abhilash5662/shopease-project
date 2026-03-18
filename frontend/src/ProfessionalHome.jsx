@@ -16,7 +16,7 @@ function ProfessionalHome() {
 
 
   const loadProducts = () => {
-    fetch("http://127.0.0.1:8000/api/products/")
+    fetch("https://shopease-project-1-6fip.onrender.com/api/products/")
       .then(res => res.json())
       .then(data => {
         console.log("Products:", data);

@@ -10,7 +10,7 @@ function ProductPage() {
   const [adding, setAdding] = useState(false);
 
   useEffect(() => {
-    fetch("https://shopease-project.onrender.com/api/products/")
+    fetch("https://shopease-project-1-6fip.onrender.com/api/products/")
       .then(res => res.json())
       .then(data => {
         const item = data.find(p => p.id === Number(id));
