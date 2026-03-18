@@ -10,7 +10,7 @@ function ProfilePage() {
   }, []);
 
   const loadOrders = () => {
-    fetch("http://127.0.0.1:8000/api/orders/")
+    fetch("https://shopease-project-1-6fip.onrender.com/api/orders/")
       .then(res => res.json())
       .then(data => setOrders(data))
       .catch(err => console.error(err));
