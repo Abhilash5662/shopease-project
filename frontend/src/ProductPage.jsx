@@ -39,7 +39,7 @@ function ProductPage() {
   return (
     <div className="product-page">
 
-      {/* Navbar */}
+    
       <header className="navbar">
         <Link to="/" className="logo">ShopZone</Link>
 
@@ -49,18 +49,18 @@ function ProductPage() {
         </div>
       </header>
 
-      {/* Product Layout */}
+      
       <div className="product-wrapper">
 
-        {/* Product Image */}
+       
         <div className="product-image">
           <img
-            src={`http://127.0.0.1:8000${product.image}`}
+            src={`https://shopease-project-1-6fip.onrender.com${product.image}`}
             alt={product.title}
           />
         </div>
 
-        {/* Product Info */}
+       
         <div className="product-info">
 
           <h1>{product.title}</h1>
@@ -83,7 +83,7 @@ function ProductPage() {
 
         </div>
 
-        {/* Purchase Box */}
+        
         <div className="purchase-box">
 
           <h2>₹{product.price}</h2>

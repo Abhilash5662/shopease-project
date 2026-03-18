@@ -4,7 +4,7 @@
   min-height: 100vh;
 }
 
-/* Navbar */
+
 
 .navbar {
   display: flex;
@@ -27,7 +27,7 @@
   text-decoration: none;
 }
 
-/* Product Layout */
+
 
 .product-wrapper {
   display: grid;
@@ -36,7 +36,7 @@
   padding: 40px;
 }
 
-/* Image */
+
 
 .product-image img {
   width: 100%;
@@ -45,7 +45,7 @@
   padding: 20px;
 }
 
-/* Info */
+
 
 .product-info h1 {
   font-size: 28px;
@@ -79,7 +79,7 @@
   margin: 20px 0;
 }
 
-/* Purchase box */
+
 
 .purchase-box {
   background: white;

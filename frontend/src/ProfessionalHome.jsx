@@ -28,7 +28,7 @@ function ProfessionalHome() {
 
 
   const loadCart = () => {
-    fetch("http://127.0.0.1:8000/api/cart/")
+    fetch("https://shopease-project-1-6fip.onrender.com/api/cart/")
       .then(res => res.json())
       .then(data => {
         console.log("Cart:", data);
@@ -38,7 +38,7 @@ function ProfessionalHome() {
   };
 
   const addToCart = (productId) => {
-    fetch("http://127.0.0.1:8000/api/cart/add/", {
+    fetch("https://shopease-project-1-6fip.onrender.com/api/cart/add/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -116,7 +116,7 @@ function ProfessionalHome() {
                   <img
                     src={
                       product.image
-                        ? `http://127.0.0.1:8000${product.image}`
+                        ? `https://shopease-project-1-6fip.onrender.com${product.image}`
                         : "https://via.placeholder.com/200"
                     }
                     alt={product.title}

@@ -21,7 +21,7 @@ function CartPage() {
   };
 
   const removeItem = (itemId) => {
-    fetch("http://127.0.0.1:8000/api/cart/remove/", {
+    fetch("https://shopease-project-1-6fip.onrender.com/api/cart/remove/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ function CartPage() {
   };
 
   const updateQuantity = (itemId, action) => {
-    fetch("http://127.0.0.1:8000/api/cart/update/", {
+    fetch("https://shopease-project-1-6fip.onrender.com/api/cart/update/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ function CartPage() {
       }),
     })
       .then(res => res.json())
-      .then(() => loadCart())   // ⭐ Refresh UI instantly
+      .then(() => loadCart())   
       .catch(err => console.error("Quantity Error:", err));
   };
 
@@ -77,7 +77,7 @@ function CartPage() {
               <div key={item.id} className="cart-item">
 
                 <img
-                  src={`http://127.0.0.1:8000${item.product_image}`}
+                  src={`https://shopease-project-1-6fip.onrender.com${item.product_image}`}
                   alt={item.product}
                 />
 
