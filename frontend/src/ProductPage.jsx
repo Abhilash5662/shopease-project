@@ -22,7 +22,7 @@ function ProductPage() {
   const addToCart = () => {
     setAdding(true);
 
-    fetch("http://127.0.0.1:8000/api/cart/add/", {
+    fetch("https://shopease-project-1-6fip.onrender.com/api/cart/add/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
